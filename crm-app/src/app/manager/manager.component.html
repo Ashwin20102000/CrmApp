@@ -1,0 +1,61 @@
+<button
+  *ngIf="!viewForm"
+  mat-raised-button
+  color="accent"
+  (click)="viewForm = true"
+>
+  ADD Manager
+</button>
+<form color="accent" *ngIf="viewForm" [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-label>Id</mat-label>
+    <input color="secondary" type="number" matInput placeholder="Id" formControlName="id" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input color="secondary" type="name" matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+  <button mat-button color="warn" (click)="viewForm = false">CANCEL</button>
+  <button mat-button color="accent" (click)="save()">SAVE</button>
+</form>
+<mat-list>
+  <mat-list-item style="background-color:rgb(123, 158, 147);margin-bottom: 5px;" *ngFor="let user of manager" class="li">
+    <p  mat-line>
+      Id: {{ user.id }} &nbsp; Name: {{ user.name }}
+    </p>
+  </mat-list-item>
+</mat-list>
+
+
+<!-- 
+  <button mat-raised-button color="primary" (click)="saveName()">Select Customer</button>
+<mat-list *ngIf="viewSelectForm">
+  <input type="number" #managerId placeholder="Manager ID">
+  <mat-list-item style="margin-bottom: 1px;" *ngFor="let customer of customers" class="li">
+    <button mat-raised-button color="secondary" (click)="addCustomer(customer)">
+       {{ customer.name }}
+    </button>
+  </mat-list-item>
+  <button mat-button color="warn" (click)="viewSelectForm=false">CANCEL</button>
+  <button mat-button color="accent" (click)="saveName(managerId.value)">Save</button>
+</mat-list> -->
+<button
+  *ngIf="!showFeed"
+  mat-raised-button
+  color="primary"
+  (click)="showFeed = true"
+>
+  Show Review
+</button>
+
+<button style="margin-left: 10px;" mat-raised-button routerLinkActive="active" routerLink="/managermessage" color="secondary" >Send Post</button>
+
+
+<mat-list *ngIf="showFeed">
+  <button mat-button color="warn" (click)="showFeed = false"><h3>Close X</h3></button>
+  <h2 style="color:whitesmoke">Reviews</h2>
+  <mat-list-item style="background-color:rgb(59, 160, 128);margin-bottom: 5px;" *ngFor="let user of customermessage.customerMessage ; let cus of managermessage.managerMessage" class="li">
+    <p style="color:#181818;" mat-line>
+    Name:{{user.id}} &nbsp; Message : {{ user.name  }}  &nbsp; Review : {{ cus.name }} &nbsp;
+  </mat-list-item>
+</mat-list>

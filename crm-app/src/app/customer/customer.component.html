@@ -1,0 +1,47 @@
+<button
+  *ngIf="!showForm"
+  mat-raised-button
+  color="accent"
+  (click)="showForm = true"
+>
+  ADD Customer
+</button>
+
+<form *ngIf="showForm" [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-label>Id</mat-label>
+    <input type="number" style="color: whitesmoke;" matInput placeholder="Id" formControlName="id" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="name" matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+  <button mat-button color="warn" (click)="showForm = false">CANCEL</button>
+  <button mat-button color="accent" (click)="save()">SAVE</button>
+</form>
+<mat-list>
+    <mat-list-item style="background-color:rgb(123, 158, 147);margin-bottom: 5px;" *ngFor="let user of customer" class="li">
+      <p style="color:#181818;" mat-line>
+        Id: {{ user.id }} &nbsp; Name: {{ user.name }} &nbsp; Manager: {{ user.manager }} 
+      </p>
+    </mat-list-item>
+</mat-list>
+
+
+<button
+  *ngIf="!showFeed"
+  mat-raised-button
+  color="primary"
+  (click)="showFeed = true"
+>
+  Show Feed
+</button>
+
+<mat-list *ngIf="showFeed">
+  <button mat-button color="warn" (click)="showFeed = false"><h3>Close X</h3></button>
+  <h2 style="color:whitesmoke">Posts</h2>
+  <mat-list-item style="background-color:rgb(59, 160, 128);margin-bottom: 5px;" *ngFor="let user of managermessages.managerMessage" class="li">
+    <p style="color:#181818;" mat-line>
+      {{ user.id  }} : &nbsp; {{ user.name }} &nbsp; <button routerLinkActive="active" routerLink="/customermessage" mat-button style="background-color: rgb(41, 84, 165)" color="accent">reply</button>
+  </mat-list-item>
+</mat-list>
