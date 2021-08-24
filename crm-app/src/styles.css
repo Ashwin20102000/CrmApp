@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { 
+    height: 100%;
+    font-family: 'Poppins', sans-serif !important;
+ }
+body { background: #111111; }
+.mat-list-item-content,span.mat-button-wrapper{
+    font-family: 'Poppins', sans-serif !important;
+}

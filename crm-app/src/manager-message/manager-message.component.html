@@ -1,0 +1,21 @@
+<form color="accent" *ngIf="viewForm" [formGroup]="formGroup">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input color="secondary" type="text" matInput placeholder="name" formControlName="id" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <input color="secondary" type="textarea" matInput placeholder="message" formControlName="name" />
+    </mat-form-field>
+    <button mat-button color="warn" (click)="viewForm = false">Clear</button>
+    <button mat-button color="accent" style="color: green;" (click)="save()">Send</button>
+  </form>
+
+
+  <mat-list>
+    <mat-list-item style="background-color:rgb(123, 158, 147);margin-bottom: 5px;" *ngFor="let user of managermessage" class="li">
+      <p style="color:#000000;" mat-line>
+        Id: {{ user.id }} &nbsp; Name: {{ user.name }} &nbsp; Manager: {{ user.manager }} 
+      </p>
+    </mat-list-item>
+  </mat-list>
